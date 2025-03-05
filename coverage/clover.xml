@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1741156433053" clover="3.2.0">
+  <project timestamp="1741156433053" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="22" coveredelements="22" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+    <file name="TodoListManager.tsx" path="C:\Users\aphac\OneDrive\Documents\Rory\SoftwareDesign_winter25\test\my-app\components\TodoListManager.tsx">
+      <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="9" type="stmt"/>
+      <line num="11" count="9" type="stmt"/>
+      <line num="13" count="9" type="stmt"/>
+      <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="20" count="9" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="24" count="9" type="stmt"/>
+      <line num="29" count="2" type="stmt"/>
+      <line num="36" count="2" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
