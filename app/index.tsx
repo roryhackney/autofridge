@@ -1,4 +1,3 @@
-import TodoListManager from "@/components/TodoListManager";
 import { Text, View } from "react-native";
 import {SvgXml} from "react-native-svg";
 
@@ -22,5 +21,5 @@ export default function Index() {
         <SvgXml xml={homeIconXML} width={100} height={100}/>
         <SvgXml xml={fridgeIcon} width={100} height={100}/>
         </View>
-    );
+    )'
 }
