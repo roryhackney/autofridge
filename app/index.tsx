@@ -1,6 +1,4 @@
-import TodoListManager from "@/components/TodoListManager";
 import { Text, View } from "react-native";
-
 export default function Index() {
   return (
     <View
@@ -11,7 +9,6 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
-      <TodoListManager/>
     </View>
   );
 }
