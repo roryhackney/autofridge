@@ -1,14 +1,27 @@
-import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import ListItems from "../components/ListItems";
 
 export default function GroceryListScreen() {
+  const groceryItems = [
+    { id: "1", name: "Milk" },
+    { id: "2", name: "Eggs" },
+    { id: "3", name: "Bread" },
+    { id: "4", name: "Butter" },
+    { id: "5", name: "Cheese" },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Grocery List Screen</Text>
+      <ListItems items={groceryItems} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  text: { fontSize: 20, fontWeight: "bold" },
+  container: {
+    flex: 1,
+    paddingTop: 20,
+    paddingHorizontal: 15,
+  },
 });
