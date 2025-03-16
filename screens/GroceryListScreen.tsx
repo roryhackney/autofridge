@@ -4,11 +4,11 @@ import ListItems from "../components/ListItems";
 
 export default function GroceryListScreen() {
   const groceryItems = [
-    { id: "1", name: "Milk" },
-    { id: "2", name: "Eggs" },
-    { id: "3", name: "Bread" },
-    { id: "4", name: "Butter" },
-    { id: "5", name: "Cheese" },
+    { id: "1", name: "Item" },
+    { id: "2", name: "Item" },
+    { id: "3", name: "Item" },
+    { id: "4", name: "Item" },
+    { id: "5", name: "Item" },
   ];
 
   return (
