@@ -7,6 +7,12 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff", 
   },
+  links: {
+    "color": "blue",
+    "textDecorationLine": "underline",
+    "textDecorationStyle": "solid",
+    "textDecorationColor": "blue",
+  },
   logo: {
     width: 200,
     height: 200,
