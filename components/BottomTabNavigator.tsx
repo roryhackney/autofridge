@@ -24,7 +24,7 @@ export default function BottomTabNavigator() {
             const IconColor = focused ? "#23AAA5" : "gray";
 
             return (
-              <View style={{ opacity: focused ? 1 : 0.5 }}>
+              <View style={{ alignItems: "center", justifyContent: "center", paddingBottom: 6 }}>
                 {typeof IconComponent === "function" ? (
                   <IconComponent width={24} height={24} color={IconColor} />
                 ) : (
@@ -33,9 +33,10 @@ export default function BottomTabNavigator() {
               </View>
             );
           },
+          tabBarLabelPosition: "below-icon",
           tabBarActiveTintColor: "#23AAA5", 
           tabBarInactiveTintColor: "gray",
-          tabBarLabelStyle: { fontSize: 12, fontWeight: "bold" }, 
+          tabBarLabelStyle: { fontSize: 12, marginTop: -2, paddingBottom: 20}
         })}
       >
         <Tab.Screen name="My Fridge" component={MyFridgeScreen} />

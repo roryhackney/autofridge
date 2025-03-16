@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import BottomTabNavigator from "../components/BottomTabNavigator";
 
 export default function Index() {
@@ -9,3 +9,4 @@ export default function Index() {
         </View>
     );
 }
+
