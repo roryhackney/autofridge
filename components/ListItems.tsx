@@ -1,0 +1,48 @@
+import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Checkbox } from "react-native-paper"; 
+
+type ListItemProps = {
+  items: { id: string; name: string }[];
+};
+
+export default function ListItem({ items }: ListItemProps) {
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+
+  const toggleCheckbox = (id: string) => {
+    setCheckedItems((prevCheckedItems) =>
+      prevCheckedItems.includes(id)
+        ? prevCheckedItems.filter((item) => item !== id)
+        : [...prevCheckedItems, id]
+    );
+  };
+
+  return (
+    <View>
+      {items.map((item) => (
+        <View key={item.id} style={styles.itemContainer}>
+          <Text style={styles.itemText}>{item.name}</Text>
+          <Checkbox
+            status={checkedItems.includes(item.id) ? "checked" : "unchecked"}
+            onPress={() => toggleCheckbox(item.id)}
+          />
+        </View>
+      ))}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 10,
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+  },
+  itemText: {
+    fontSize: 18,
+  },
+});
