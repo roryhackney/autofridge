@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import { View, Image } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import MyFridgeScreen from "../screens/MyFridgeScreen";
@@ -7,16 +8,20 @@ import HomeIcon from "../assets/icons/HomeIcon";
 import MyFridgeIcon from "../assets/icons/MyFridgeIcon";
 import GroceryListIcon from "../assets/icons/GroceryListIcon";
 
+
 const Tab = createBottomTabNavigator();
 
 const icons: Record<string, any> = {
+
   "My Fridge": MyFridgeIcon,
   "Home": HomeIcon,
   "Grocery List": GroceryListIcon,
+
 };
 
 export default function BottomTabNavigator() {
   return (
+
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => {
@@ -43,5 +48,6 @@ export default function BottomTabNavigator() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Grocery List" component={GroceryListScreen} />
       </Tab.Navigator>
+
   );
 }
