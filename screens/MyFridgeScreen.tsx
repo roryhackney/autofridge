@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+
+import React from "react";
+import { View, Text } from "react-native";
 
 export default function MyFridgeScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>My Fridge Screen</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={{ fontSize: 20 }}>My Fridge Screen</Text>
     </View>
   );
 }
