@@ -1,17 +1,12 @@
-import TodoListManager from "@/components/TodoListManager";
-import { Text, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
+import TopTabNavigator from "../components/TopTabNavigator";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <TodoListManager/>
+    <View>
+      {/* Top Tab Navigator */}
+      <TopTabNavigator />
     </View>
   );
 }
