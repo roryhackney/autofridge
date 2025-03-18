@@ -1,12 +1,13 @@
 
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import ToggleSwitch from "../components/ToggleSwitch";
 import TopTabNavigator from "../components/TopTabNavigator";
+import { globalStyles } from "@/assets/global";
 
 export default function Index() {
   return (
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
       <TopTabNavigator />
       <ToggleSwitch />
     </View>
