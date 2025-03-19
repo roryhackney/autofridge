@@ -55,6 +55,13 @@ const globalStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+  genericButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
+    margin: 10,
+    height: 40,
+  }
 });
 
 export default globalStyles;
