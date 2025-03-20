@@ -30,13 +30,9 @@ export default function FoodDetail() {
             <GenericButton title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
         </View>
     }
-    const st = { //template renders at 360/250, image file is 720/500
-        width: 360,
-        height: 250
-    }
     return (
         <View>
-            <Image source={require("@/assets/images/fruit.png")} style={st}/>
+            {getDefaultImage(foodItem.category)}
             <Text>{id}</Text>
             <Text>{foodItem.category}</Text>
             <Text>{foodItem.description}</Text>
@@ -45,6 +41,18 @@ export default function FoodDetail() {
             <GenericButton title="Add to grocery list" isSmall={true} isDark={true} action={() => console.log("Add to list was clicked")}/>
         </View>
     )
+}
+
+function getDefaultImage(category: string) {
+    const st = { //template renders at 360/250, image file is 720/500
+        width: 360,
+        height: 250
+    }
+    if (category === "Meats/Fish") category = "Meats";
+    category = "Dairy";
+    return <Image style={st} source={require("@/assets/images/CategoryImages/Dairy.jpg")}/>;
+    //somethings not working here
+    // return <Image style={st} source={require("../../../assets/images/CategoryImages/" + category + ".jpg")}/>;
 }
 
 function getFoodById(id: string) {
