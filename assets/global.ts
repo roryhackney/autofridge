@@ -7,6 +7,12 @@ const globalStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
+  links: {
+    "color": "blue",
+    "textDecorationLine": "underline",
+    "textDecorationStyle": "solid",
+    "textDecorationColor": "blue",
+  },
   logo: {
     width: 200,
     height: 200,
@@ -49,6 +55,13 @@ const globalStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+  genericButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
+    margin: 10,
+    height: 40,
+  }
 });
 
 export default globalStyles;
