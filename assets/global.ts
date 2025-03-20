@@ -61,6 +61,10 @@ const globalStyles = StyleSheet.create({
     borderRadius: 8,
     margin: 10,
     height: 40,
+  },
+  genericButtonText: {
+    color: "white",
+    fontSize: 16
   }
 });
 

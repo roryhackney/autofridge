@@ -8,7 +8,7 @@ export default function Index() {
         <View>
             <Text>Implement Sign Up screen</Text>
             <Link style={globalStyles.links} href="/home">Home</Link>
-            <GenericButton title="My button" action={()=>console.log("clicked")} color="#23AAA5" width={150}/>
+            <GenericButton title="My button" action={()=>console.log("clicked")}/>
         </View>
     );
 }
