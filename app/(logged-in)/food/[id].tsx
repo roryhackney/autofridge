@@ -15,30 +15,34 @@ export default function FoodDetail() {
         );
     }
 
-    let content = <View>
-        <Text>Quantity    {foodItem.quantity}</Text>
+    let content = <View style={{alignItems: "center"}}>
+        <Text style={{marginVertical: 30}}>Quantity    {foodItem.quantity}</Text>
         <GenericButton title="Add to fridge" isSmall={true} action={() => console.log("Add to fridge was clicked")}/>
     </View>;
 
     if (foodItem.quantity !== 0) {
         content = <View>
-            <Text>Quantity:   {foodItem.quantity} Shared</Text>
-            <Text>Expires: {foodItem.expires}</Text>
-            <Text>Purchased: {foodItem.purchased}</Text>
-            <Text>Owned by: {foodItem.owner}</Text>
-            <Text>Edit</Text>
+            <View style={{backgroundColor: "#F1FFFE", alignItems: "center", padding: 20}}>
+                <Text>Quantity:   {foodItem.quantity} Shared</Text>
+                <Text>Expires: {foodItem.expires}</Text>
+                <Text>Purchased: {foodItem.purchased}</Text>
+                <Text>Owned by: {foodItem.owner}</Text>
+                <Text>Edit</Text>
+            </View>
             <GenericButton title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
         </View>
     }
     return (
-        <View>
+        <View style={{alignItems: "center", maxWidth: 320}}>
             {getDefaultImage(foodItem.category)}
-            <Text>{id}</Text>
-            <Text>{foodItem.category}</Text>
-            <Text>{foodItem.description}</Text>
-            <Text>Edit</Text>
-            {content}
-            <GenericButton title="Add to grocery list" isSmall={true} isDark={true} action={() => console.log("Add to list was clicked")}/>
+            <View style={{padding: 10, alignItems: "center"}}>
+                <Text style={{fontSize: 21, fontWeight: "bold", marginTop: 10}}>{id}</Text>
+                <Text style={{color: "#4C4C4C"}}>{foodItem.category}</Text>
+                <Text>{foodItem.description}</Text>
+                <Text style={[globalStyles.links, {marginVertical: 10}]}>Edit</Text>
+                {content}
+                <GenericButton title="Add to grocery list" isSmall={true} isDark={true} action={() => console.log("Add to list was clicked")}/>
+            </View> 
         </View>
     )
 }

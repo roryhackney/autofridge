@@ -59,7 +59,8 @@ const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 8,
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 2,
     height: 40,
   },
   genericButtonText: {
