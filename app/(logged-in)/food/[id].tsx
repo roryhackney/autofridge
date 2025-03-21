@@ -1,4 +1,4 @@
-import {Text, View, Image} from "react-native";
+import {Text, View, Image, ImageSourcePropType} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
 import globalStyles from "@/assets/global";
 import GenericButton from "@/components/GenericButton";
@@ -48,11 +48,18 @@ function getDefaultImage(category: string) {
         width: 360,
         height: 250
     }
-    if (category === "Meats/Fish") category = "Meats";
-    category = "Dairy";
-    return <Image style={st} source={require("@/assets/images/CategoryImages/Dairy.jpg")}/>;
-    //somethings not working here
-    // return <Image style={st} source={require("../../../assets/images/CategoryImages/" + category + ".jpg")}/>;
+    const catToImage: {[key: string]: ImageSourcePropType} = {
+        "Beverages": require("@/assets/images/CategoryImages/Beverages.jpg"),
+        "Condiments": require("@/assets/images/CategoryImages/Condiments.jpg"),
+        "Dairy": require("@/assets/images/CategoryImages/Dairy.jpg"),
+        "Fruit": require("@/assets/images/CategoryImages/Fruit.jpg"),
+        "Grains": require("@/assets/images/CategoryImages/Grains.jpg"),
+        "Meals": require("@/assets/images/CategoryImages/Meals.jpg"),
+        "Meats/Fish": require("@/assets/images/CategoryImages/Meats.jpg"),
+        "Vegetables": require("@/assets/images/CategoryImages/Vegetables.jpg")
+    }
+    const source = catToImage[category];
+    return <Image style={st} source={source}/>;
 }
 
 function getFoodById(id: string) {
