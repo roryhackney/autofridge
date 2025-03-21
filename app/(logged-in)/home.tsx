@@ -4,8 +4,8 @@ import globalStyles from "@/assets/global";
 
 export default function Home() {
     return (
-        <View>
-            <Text>Implement Home screen</Text>
+        <View style={{flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "flex-start"}}>
+            <Text style={{fontSize: 16, color: "black"}}>Implement Home screen</Text>
             <Link style={globalStyles.links} href="/home">Home</Link>
             <Link style={globalStyles.links} href="/">Sign In</Link>
             <Link style={globalStyles.links} href="/register">Register</Link>

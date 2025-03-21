@@ -1,4 +1,4 @@
-import {Text, View, Image, ImageSourcePropType} from "react-native";
+import {Text, View, Image, ImageSourcePropType, ScrollView} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
 import globalStyles from "@/assets/global";
 import GenericButton from "@/components/GenericButton";
@@ -23,17 +23,18 @@ export default function FoodDetail() {
     if (foodItem.quantity !== 0) {
         content = <View>
             <View style={{backgroundColor: "#F1FFFE", alignItems: "center", padding: 20}}>
-                <Text>Quantity:   {foodItem.quantity} Shared</Text>
-                <Text>Expires: {foodItem.expires}</Text>
-                <Text>Purchased: {foodItem.purchased}</Text>
-                <Text>Owned by: {foodItem.owner}</Text>
-                <Text>Edit</Text>
+                <Text style={{padding:10}}>Quantity:   {foodItem.quantity} Shared</Text>
+                <Text style={{padding:10}}>Expires: {foodItem.expires}</Text>
+                <Text style={{padding:10}}>Purchased: {foodItem.purchased}</Text>
+                <Text style={{padding:10}}>Owned by: {foodItem.owner}</Text>
+                <Text style={[globalStyles.links, {padding:5}]}>Edit</Text>
             </View>
             <GenericButton title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
         </View>
     }
     return (
-        <View style={{alignItems: "center", maxWidth: 320}}>
+        <ScrollView>
+        <View style={{alignItems: "center"}}>
             {getDefaultImage(foodItem.category)}
             <View style={{padding: 10, alignItems: "center"}}>
                 <Text style={{fontSize: 21, fontWeight: "bold", marginTop: 10}}>{id}</Text>
@@ -44,13 +45,14 @@ export default function FoodDetail() {
                 <GenericButton title="Add to grocery list" isSmall={true} isDark={true} action={() => console.log("Add to list was clicked")}/>
             </View> 
         </View>
+        </ScrollView>
     )
 }
 
 function getDefaultImage(category: string) {
     const st = { //template renders at 360/250, image file is 720/500
-        width: 360,
-        height: 250
+        width: "100%",
+        maxWidth: "720"
     }
     const catToImage: {[key: string]: ImageSourcePropType} = {
         "Beverages": require("@/assets/images/CategoryImages/Beverages.jpg"),
@@ -63,7 +65,7 @@ function getDefaultImage(category: string) {
         "Vegetables": require("@/assets/images/CategoryImages/Vegetables.jpg")
     }
     const source = catToImage[category];
-    return <Image style={st} source={source}/>;
+    return <Image resizeMode="cover" style={st} source={source}/>;
 }
 
 function getFoodById(id: string) {
