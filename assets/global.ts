@@ -8,10 +8,11 @@ const globalStyles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   links: {
-    "color": "blue",
-    "textDecorationLine": "underline",
-    "textDecorationStyle": "solid",
-    "textDecorationColor": "blue",
+    fontSize: 16,
+    color: "blue",
+    textDecorationLine: "underline",
+    textDecorationStyle: "solid",
+    textDecorationColor: "blue",
   },
   logo: {
     width: 200,
@@ -65,6 +66,9 @@ const globalStyles = StyleSheet.create({
   },
   genericButtonText: {
     color: "white",
+    fontSize: 16
+  },
+  bodyText: {
     fontSize: 16
   }
 });
