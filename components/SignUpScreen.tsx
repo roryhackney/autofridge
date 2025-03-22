@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text, ScrollView } from "react-native";
-import globalStyles from "../assets/global";
+import { Link } from "expo-router";
+import globalStyles from "@/assets/global";
 
 export default function SignUpScreen() {
   const [fullName, setFullName] = useState("");

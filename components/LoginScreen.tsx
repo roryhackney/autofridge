@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { View, TextInput, TouchableOpacity, Text } from "react-native";
-import LogoLogin from "../components/LogoLogin";
-import globalStyles from "../assets/global";
+import { TextInput, TouchableOpacity, Text, View } from "react-native";
+import globalStyles from "@/assets/global";
+import LogoLogin from "@/components/LogoLogin";
 
-interface LoginScreenProps {
-  navigation: any;
-}
-
-export default function LoginScreen({ navigation }: LoginScreenProps) {
+export default function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,18 +24,9 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
         secureTextEntry
         onChangeText={setPassword}
       />
-
-      <View style={globalStyles.buttonContainer}>
-        <TouchableOpacity style={globalStyles.loginButton}>
-          <Text style={globalStyles.buttonText}>Log In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.signUpButton}
-          onPress={() => navigation.navigate("SignUp")}
-        >
-          <Text style={globalStyles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={globalStyles.loginButton}>
+        <Text style={globalStyles.buttonText}>Log In</Text>
+      </TouchableOpacity>
     </View>
   );
 }
