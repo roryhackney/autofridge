@@ -51,6 +51,14 @@ const globalStyles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
+  submitButton: {
+    backgroundColor: "#4CAF50", 
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    width: "90%", 
+    marginTop: 15,
+  },
   buttonText: {
     color: "#fff",
     fontSize: 16,
@@ -66,11 +74,11 @@ const globalStyles = StyleSheet.create({
   },
   genericButtonText: {
     color: "white",
-    fontSize: 16
+    fontSize: 16,
   },
   bodyText: {
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
 
 export default globalStyles;
