@@ -1,6 +1,6 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default function TextInputWithLabel(props: {label: string}) {
+export default function TextInputWithLabel(props: {label: string, initialValue?: string}) {
     const styles = StyleSheet.create({
         input: {
             width: 272,
@@ -31,7 +31,7 @@ export default function TextInputWithLabel(props: {label: string}) {
             <TextInput  style={styles.input}
                         accessibilityLabel={props.label}
                         accessibilityLabelledBy={props.label}
-                        placeholder={props.label}
+                        placeholder={props.initialValue? props.initialValue : props.label}
             ></TextInput>
         </View>
     );
