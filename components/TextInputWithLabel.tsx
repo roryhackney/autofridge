@@ -1,6 +1,6 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default function TextInputWithLabel(props: {label: string}) {
+export default function TextInputWithLabel(props: {label: string; value?: string; onChangeText?:(text:string) => void;}) {
     const styles = StyleSheet.create({
         input: {
             width: 272,
@@ -32,6 +32,9 @@ export default function TextInputWithLabel(props: {label: string}) {
                         accessibilityLabel={props.label}
                         accessibilityLabelledBy={props.label}
                         placeholder={props.label}
+                        // This allows input value to be saved when user clicks saved button. This are set as optional
+                        value={props.value || ""}    // displays the stored value
+                        onChangeText={props.onChangeText || (() => {})}    // Updates the value as the user types
             ></TextInput>
         </View>
     );
