@@ -20,20 +20,21 @@ export default function Profile() {
     const storage = getStorage(firebaseApp);
     const user = auth.currentUser; 
 
-    // Function to pick image
+    const changeUsername = (text) => setUsername(text);
+    const changeEmail = (text) => setEmail(text);
+    const changePassword = (text) => setPassword(text);
+    const changeConfirmPassword = (text) => setConfirmPassword(text);
+
     const pickImage = async () => {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== 'granted') {
             Alert.alert('Permission denied', 'You need to grant permission to access the camera roll.');
             return;
         }
-
-        // Launch Image Picker
         const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 1,
         });
-
         if (!result.canceled && result.assets && result.assets[0].uri) {
             setImageUri(result.assets[0].uri);  
         } else {
@@ -41,35 +42,20 @@ export default function Profile() {
         }
     };
 
-    // Function to upload the profile image to Firebase Storage
     const uploadImage = async () => {
-        if (!imageUri) {
-            return null;
-        }
-
+        if (!imageUri) return null;
         const storageRef = ref(storage, `profile_pictures/${user?.uid}`);
         const response = await fetch(imageUri);
         const blob = await response.blob();
-
         const uploadTask = uploadBytesResumable(storageRef, blob);
-
         return new Promise<string>((resolve, reject) => {
-            uploadTask.on(
-                "state_changed",
-                null, 
-                (error) => {
-                    reject(error);
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        resolve(downloadURL);  
-                    });
-                }
-            );
+            uploadTask.on("state_changed", null, reject, async () => {
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(downloadURL);
+            });
         });
     };
 
-    // Handle saving profile data including image and other fields
     const handleSaveProfile = async () => {
         if (!user) {
             Alert.alert("Error", "No user is logged in.");
@@ -79,35 +65,19 @@ export default function Profile() {
             Alert.alert("Error", "Passwords do not match.");
             return;
         }
-
         try {
-            const userDocRef = doc(db, "users", user?.uid || ""); 
-
-            // If user updates their email
+            const userDocRef = doc(db, "users", user?.uid || "");
             if (email !== user?.email) {
                 await updateEmail(user, email);
             }
-
-            // If user updates their password
             if (password) {
                 await updatePassword(user, password);
             }
-
-            // If the user uploaded a profile image, update it in storage
-            if (imageUri) {
-                const imageUrl = await uploadImage();
-                // Update the Firestore profile data (username and imageUrl)
-                await updateDoc(userDocRef, {
-                    username: username,
-                    profileImage: imageUrl, // Save the image URL to Firestore
-                });
-            } else {
-                // Update only username if no image was selected
-                await updateDoc(userDocRef, {
-                    username: username,
-                });
-            }
-
+            const imageUrl = imageUri ? await uploadImage() : null;
+            await updateDoc(userDocRef, {
+                username: username,
+                ...(imageUrl && { profileImage: imageUrl })
+            });
             Alert.alert("Success", "Profile updated successfully!");
         } catch (error) {
             console.error("Error updating profile:", error);
@@ -115,45 +85,23 @@ export default function Profile() {
         }
     };
 
-    // Validation function to check if the form is valid
-    const isFormValid = () => {
-        const isEmailValid = email !== user?.email; // Check if email is different from the current one
-        const arePasswordsMatching = password === confirmPassword; // Check if passwords match
-        const areFieldsFilled = username !== "" && email !== "" && password !== "" && confirmPassword !== ""; // Check if fields are filled
-        return isEmailValid && arePasswordsMatching && areFieldsFilled;
-    };
-
     return (
-        <View style={{ flex: 1 }}>
-          
-
-            <View style={{ flex: 1, padding: 20, width: "100%", alignItems: "center" }}>
-
-                {/* Profile Picture */}
-                <Text style={{ fontSize: 40, fontWeight: "bold", marginBottom: 20 }}>Profile</Text>
-                <Image
-                    source={imageUri ? { uri: imageUri } : require('../../assets/images/AutoFridge.png')} // Use autofridge logo if no image is selected
-                    style={{ width: 100, height: 100, borderWidth: 2, borderColor: "#ccc", marginBottom: 20 }}
-                />
-                <TouchableOpacity onPress={pickImage}>
-                    <Text style={{ textDecorationLine: 'underline', color: 'black', fontSize: 16 }}>
-                        Choose a Profile Picture
-                    </Text>
-                </TouchableOpacity>
-
-                <View style={{ marginBottom: 20 }} />
-
-                {/* Input Fields */}
-
-                <TextInputWithLabel label="Username" value={username} onChangeText={setUsername} />
-                <TextInputWithLabel label="Email" value={email} onChangeText={setEmail} />
-                <TextInputWithLabel label="Password" value={password} onChangeText={setPassword}/>
-                <TextInputWithLabel label="Confirm Password" value={confirmPassword} onChangeText={setConfirmPassword}/>
-           
-                {/* Save Button */}
-                <SaveButton title="Save" onPress={handleSaveProfile} />
-            </View>
-
+        <View style={{ flex: 1, padding: 20, alignItems: "center" }}>
+            <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 20 }}>Profile</Text>
+            <Image
+                source={imageUri ? { uri: imageUri } : require('../../assets/images/AutoFridge.png')}
+                style={{ width: 100, height: 100, borderWidth: 2, borderColor: "#ccc", marginBottom: 20 }}
+            />
+            <TouchableOpacity onPress={pickImage}>
+                <Text style={{ textDecorationLine: 'underline', color: 'black', fontSize: 16 }}>
+                    Choose a Profile Picture
+                </Text>
+            </TouchableOpacity>
+            <TextInputWithLabel label="Username" value={username} onChangeText={changeUsername} />
+            <TextInputWithLabel label="Change Email address" value={email} onChangeText={changeEmail} />
+            <TextInputWithLabel label="Change Password" value={password} onChangeText={changePassword} secureTextEntry />
+            <TextInputWithLabel label="Re-Type Password" value={confirmPassword} onChangeText={changeConfirmPassword} secureTextEntry />
+            <SaveButton title="Save" onPress={handleSaveProfile} />
         </View>
     );
 }

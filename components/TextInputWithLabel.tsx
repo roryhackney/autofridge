@@ -32,6 +32,7 @@ export default function TextInputWithLabel(props: {label: string; value?: string
                         accessibilityLabel={props.label}
                         accessibilityLabelledBy={props.label}
                         placeholder={props.label}
+                        placeholderTextColor="lightgray"
                         // This allows input value to be saved when user clicks saved button. This are set as optional
                         value={props.value || ""}    // displays the stored value
                         onChangeText={props.onChangeText || (() => {})}    // Updates the value as the user types

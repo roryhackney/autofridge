@@ -14,3 +14,4 @@ export default function GroceryListIcon({ width = 50, height = 50, color = "#1E1
     </Svg>
   );
 }
+
