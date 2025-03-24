@@ -2,10 +2,13 @@ import {Modal, View, TouchableOpacity, TouchableWithoutFeedback} from "react-nat
 import TextInputWithLabel from "./TextInputWithLabel";
 import GenericButton from "./GenericButton";
 import QuantityInput from "./QuantityInput";
+import { useState } from "react";
 
 export default function EditStockPopup(props: {visible: boolean, setVisible: Function, food: {quantity: number, expires?: string, purchased?: string, owner?: string}}) {
-    // const [errors, setErrors] = useState({name: "", category: "", description: ""})
-    // const [values, setValues] = useState({name: props.food.name, category: props.food.category, description: props.food.description});
+    const [expires, setExpires] = useState(props.food.expires);
+    const [purchased, setPurchased] = useState(props.food.purchased);
+    const [owner, setOwner] = useState(props.food.owner);
+    const [shared, setShared] = useState("Yes");
 
     const style = {
         width: 345,
@@ -27,11 +30,11 @@ export default function EditStockPopup(props: {visible: boolean, setVisible: Fun
                 <View style={style}>
                     <QuantityInput initialValue={props.food.quantity}/>
                     {/* TODO: make this a select input or RN equivalent?? */}
-                    <TextInputWithLabel label="Shared" initialValue="Yes"/>
+                    <TextInputWithLabel label="Shared" value={shared} onChangeText={(value) => setShared(value)}/>
                     {/* TODO: make this a calendar picker or RN equivalent?? */}
-                    <TextInputWithLabel label="Expires on" initialValue={props.food.expires}/>
-                    <TextInputWithLabel label="Purchased on" initialValue={props.food.purchased}/>
-                    <TextInputWithLabel label="Owner" initialValue={props.food.owner}/>
+                    <TextInputWithLabel label="Expires on" value={expires} onChangeText={(value) => {setExpires(value)}}/>
+                    <TextInputWithLabel label="Purchased on" value={purchased} onChangeText={(value) => {setPurchased(value)}}/>
+                    <TextInputWithLabel label="Owner" value={owner} onChangeText={(value) => {setOwner(value)}}/>
                     <GenericButton isDark={true} title="Save changes" action={
                         () => {
                             console.log("Updating stock info...");

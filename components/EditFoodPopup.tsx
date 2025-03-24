@@ -1,10 +1,13 @@
 import {Modal, View, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 import TextInputWithLabel from "./TextInputWithLabel";
 import GenericButton from "./GenericButton";
+import { useState } from "react";
 
 export default function EditFoodPopup(props: {visible: boolean, setVisible: Function, food: {name: string, category: string, description: string}}) {
-    // const [errors, setErrors] = useState({name: "", category: "", description: ""})
-    // const [values, setValues] = useState({name: props.food.name, category: props.food.category, description: props.food.description});
+    const [name, setName] = useState(props.food.name);
+    const [category, setCategory] = useState(props.food.category);
+    const [description, setDescription] = useState(props.food.description);
+
 
     const style = {
         width: 345,
@@ -24,11 +27,11 @@ export default function EditFoodPopup(props: {visible: boolean, setVisible: Func
             <TouchableWithoutFeedback>
                 {/*Edit food form*/}
                 <View style={style}>
-                    <TextInputWithLabel label="Name" initialValue={props.food.name}/>
+                    <TextInputWithLabel label="Name" value={name} onChangeText={(value) => setName(value)}/>
                     {/* TODO: make this a select input or RN equivalent?? */}
-                    <TextInputWithLabel label="Category" initialValue={props.food.category}/>
+                    <TextInputWithLabel label="Category" value={category}onChangeText={(value) => setCategory(value)}/>
                     {/* TODO: make this a textarea or RN equivalent?? */}
-                    <TextInputWithLabel label="Description" initialValue={props.food.description}/>
+                    <TextInputWithLabel label="Description" value={description} onChangeText={(value) => setDescription(value)}/>
                     <GenericButton isDark={true} title="Save changes" action={
                         () => {
                             console.log("Updating food info...");
