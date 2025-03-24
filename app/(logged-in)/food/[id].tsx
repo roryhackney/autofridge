@@ -5,10 +5,14 @@ import GenericButton from "@/components/GenericButton";
 import { getFoodById } from "@/components/database-mock";
 import { useState } from "react";
 import EditFoodPopup from "@/components/EditFoodPopup";
+import EditStockPopup from "@/components/EditStockPopup";
 
 export default function FoodDetail() {
     const {id} = useLocalSearchParams<{"id": string}>();
     const foodItem = getFoodById(id);
+    
+    const [visible, setVisible] = useState(false);
+    const [stockVisible, setStockVisible] = useState(false);
 
     if (typeof foodItem === "string") {
         return (
@@ -41,18 +45,18 @@ export default function FoodDetail() {
                         <Text style={[globalStyles.bodyText, {padding:10}]}>{foodItem.owner}</Text>
                     </View>
                 </View>
-                <Text style={[globalStyles.links, {padding:5}]}>Edit</Text>
+                <Text style={[globalStyles.links, {padding:5}]} onPress={() => setStockVisible(true)}>Edit</Text>
             </View>
             <GenericButton style={{marginBottom: 4}} title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
         </View>
     }
 
-    const [visible, setVisible] = useState(false);
     return (
         <ScrollView contentContainerStyle={{alignContent: "center", backgroundColor: "white"}}>
             {foodItem.image}
             <View style={{padding: 10, alignItems: "center"}}>
                 <EditFoodPopup visible={visible} setVisible={setVisible} food={{name: id, category: foodItem.category, description: foodItem.description}}/>
+                <EditStockPopup visible={stockVisible} setVisible={setStockVisible} food={{quantity: foodItem.quantity, expires: foodItem.expires, purchased: foodItem.purchased, owner: foodItem.owner}}/>
                 <Text style={{fontSize: 21, fontWeight: "bold", marginTop: 10}}>{id}</Text>
                 <Text style={[globalStyles.bodyText, {color: "#4C4C4C"}]}>{foodItem.category}</Text>
                 <Text style={globalStyles.bodyText}>{foodItem.description}</Text>

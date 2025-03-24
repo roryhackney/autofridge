@@ -26,7 +26,8 @@ export default function QuantityInput(props: {initialValue: number}) {
             fontWeight: 500
         },
         container: {
-            marginBottom: 20
+            marginBottom: 20,
+            width: 142
         }
     });
 
