@@ -34,17 +34,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderBottomWidth: 1,
     borderColor: "#ccc",
-    justifyContent: "space-between",
+    paddingHorizontal: 10, // Add padding instead of large margins
   },
   itemText: {
     fontSize: 18,
-    flex: 1,
+    flex: 1, // Allow text to take available space
     marginLeft: 10,
-    marginRight: 250,
   },
   detailText: {
     fontSize: 16,
     color: "#A1D8D0",
-    marginLeft: 250,
+    alignSelf: "flex-end", // Avoid absolute positioning
   },
 });

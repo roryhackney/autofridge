@@ -11,9 +11,12 @@ import Menu from "@/components/Menu";
 export default function RootLayout() {
     return (
         <>
-        
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 10 }}>
-                <Link href="../components/Bell" style={{ color: "black" }}>
+
+
+            <Stack />
+            <View style={{ flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', padding: 20 }}>
+                <Link href="/fridges" style={{ color: "black" }}>
+                  
                     <View style={{ alignItems: "center" }}>
                         <Bell/>
                     </View>
