@@ -8,6 +8,7 @@ import { Link } from 'expo-router';
 export default function RootLayout() {
     return (
         <>
+
             <Stack />
             <View style={{ flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', padding: 20 }}>
                 <Link href="/fridges" style={{ color: "black" }}>
