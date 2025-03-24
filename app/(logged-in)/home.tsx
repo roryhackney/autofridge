@@ -2,6 +2,7 @@ import {Text, View} from "react-native";
 import {Link} from "expo-router";
 import globalStyles from "@/assets/global";
 
+
 export default function Home() {
     return (
         <View style={{flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "flex-start"}}>

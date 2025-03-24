@@ -1,7 +1,6 @@
 import { Text, View } from "react-native";
 import {Link} from "expo-router";
 import globalStyles from "@/assets/global";
-import GenericButton from "@/components/GenericButton";
 
 export default function Index() {
     return (
