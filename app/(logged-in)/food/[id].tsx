@@ -43,7 +43,7 @@ export default function FoodDetail() {
                 </View>
                 <Text style={[globalStyles.links, {padding:5}]}>Edit</Text>
             </View>
-            <GenericButton title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
+            <GenericButton style={{marginBottom: 4}} title="Remove from fridge" isSmall={true} action={() => console.log("Remove from fridge was clicked")}/>
         </View>
     }
 

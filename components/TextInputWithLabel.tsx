@@ -32,6 +32,8 @@ export default function TextInputWithLabel(props: {label: string, initialValue?:
                         accessibilityLabel={props.label}
                         accessibilityLabelledBy={props.label}
                         placeholder={props.initialValue? props.initialValue : props.label}
+                        defaultValue={props.initialValue? props.initialValue : ""}
+                        placeholderTextColor={"gray"}
             ></TextInput>
         </View>
     );
