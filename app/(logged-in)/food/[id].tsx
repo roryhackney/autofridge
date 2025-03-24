@@ -4,7 +4,7 @@ import globalStyles from "@/assets/global";
 import GenericButton from "@/components/GenericButton";
 import { getFoodById } from "@/components/database-mock";
 import { useState } from "react";
-import EditFoodInfo from "@/components/EditFoodInfo";
+import EditFoodPopup from "@/components/EditFoodPopup";
 
 export default function FoodDetail() {
     const {id} = useLocalSearchParams<{"id": string}>();
@@ -52,14 +52,14 @@ export default function FoodDetail() {
         <ScrollView contentContainerStyle={{alignContent: "center", backgroundColor: "white"}}>
             {foodItem.image}
             <View style={{padding: 10, alignItems: "center"}}>
-                <EditFoodInfo visible={visible} setVisible={setVisible} food={{name: id, category: foodItem.category, description: foodItem.description}}/>
+                <EditFoodPopup visible={visible} setVisible={setVisible} food={{name: id, category: foodItem.category, description: foodItem.description}}/>
                 <Text style={{fontSize: 21, fontWeight: "bold", marginTop: 10}}>{id}</Text>
                 <Text style={[globalStyles.bodyText, {color: "#4C4C4C"}]}>{foodItem.category}</Text>
                 <Text style={globalStyles.bodyText}>{foodItem.description}</Text>
                 <Text style={[globalStyles.links, {marginVertical: 10}]} onPress={() => setVisible(true)}>Edit</Text>
                 {content}
                 <GenericButton title="Add to grocery list" isSmall={true} isDark={true} action={() => console.log("Add to list was clicked")}/>
-            </View> 
+            </View>
         </ScrollView>
     )
 }
