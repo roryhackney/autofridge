@@ -3,7 +3,7 @@ import { TextInput, TouchableOpacity, Text, View } from "react-native";
 import globalStyles from "@/assets/global";
 import LogoLogin from "@/components/LogoLogin";
 
-export default function LoginScreen() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

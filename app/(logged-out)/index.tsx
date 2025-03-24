@@ -12,7 +12,7 @@ export default function Index() {
           <Text style={globalStyles.genericButtonText}>Log In</Text>
         </View>
       </Link>
-      <Link style={globalStyles.links} href="/SignUp">
+      <Link style={globalStyles.links} href="/register">
         <View style={globalStyles.genericButton}>
           <Text style={globalStyles.genericButtonText}>Sign Up</Text>
         </View>
