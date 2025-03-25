@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TextInput, TouchableOpacity, Text, View } from "react-native";
 import globalStyles from "@/assets/globalStyles";
 import LogoLogin from "@/components/LogoLogin";
+import { Link } from "expo-router";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -24,9 +25,18 @@ export default function Login() {
         secureTextEntry
         onChangeText={setPassword}
       />
-      <TouchableOpacity style={globalStyles.loginButton}>
-        <Text style={globalStyles.buttonText}>Log In</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', marginTop: 10 }}>
+        <Link style={globalStyles.links} href="/login">
+          <View style={[globalStyles.genericButton, { backgroundColor: '#23AAA5', marginRight: 10 }]}>
+            <Text style={globalStyles.genericButtonText}>Log In</Text>
+          </View>
+        </Link>
+        <Link style={globalStyles.links} href="/register">
+          <View style={[globalStyles.genericButton, { backgroundColor: '#00434B' }]}>
+            <Text style={globalStyles.genericButtonText}>Sign Up</Text>
+          </View>
+        </Link>
+      </View>
     </View>
   );
 }
