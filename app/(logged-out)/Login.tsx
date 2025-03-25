@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity, Text, View } from "react-native";
-import globalStyles from "@/assets/global";
+import globalStyles from "@/assets/globalStyles";
 import LogoLogin from "@/components/LogoLogin";
 
 export default function Login() {

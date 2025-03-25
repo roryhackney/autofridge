@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Text, ScrollView } from "react-native";
 import { Link } from "expo-router";
-import globalStyles from "@/assets/global";
+import globalStyles from "@/assets/globalStyles";
 
 export default function register() {
   const [fullName, setFullName] = useState("");

@@ -20,10 +20,7 @@
     "@react-navigation/bottom-tabs": "^7.2.1",
     "@react-navigation/material-top-tabs": "^7.1.1",
     "@react-navigation/native": "^7.0.18",
-<<<<<<< HEAD
     "@react-navigation/stack": "^7.2.2",
-=======
->>>>>>> bba3f2740d45e1d7002df31599a9e401e1af0f3f
     "expo": "~52.0.37",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.7",

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, Switch, ScrollView } from 'react-native';
-import globalStyles from '../../assets/global';  
+import globalStyles from '../../assets/globalStyles';
 
-const notifications = [
+interface Notification {
+  label: string;
+  value: string;
+}
+
+const notifications: Notification[] = [
   { label: 'Stay Updated', value: 'stayUpdated' },
   { label: 'Fridge Update', value: 'fridgeUpdate' },
   { label: 'Grocery Update', value: 'groceryUpdate' },
@@ -14,12 +19,19 @@ const notifications = [
   { label: 'Too many notifications', value: 'tooManyNotifications' },
 ];
 
+interface Settings {
+  [key: string]: boolean;
+}
+
 const NotificationSettingScreen = () => {
-  const [settings, setSettings] = useState(
-    notifications.reduce((acc, item) => ({ ...acc, [item.value]: false }), {})
+  const [settings, setSettings] = useState<Settings>(
+    notifications.reduce((acc: Settings, item) => {
+      acc[item.value] = false;
+      return acc;
+    }, {})
   );
 
-  const toggleSwitch = (value) => {
+  const toggleSwitch = (value: string) => {
     setSettings((prevSettings) => ({
       ...prevSettings,
       [value]: !prevSettings[value],
