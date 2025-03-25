@@ -56,4 +56,4 @@ const NotificationSettingScreen = () => {
   );
 };
 
-export default Notification;
+export default NotificationSettingScreen;

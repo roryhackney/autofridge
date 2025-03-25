@@ -29,6 +29,7 @@ const globalStyles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 15,
     backgroundColor: '#f9f9f9',
+    color: '#000',
   },
   buttonContainer: {
     flexDirection: 'row',
