@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { TextInput, TouchableOpacity, Text, View } from "react-native";
 import globalStyles from "@/assets/globalStyles";
 import LogoLogin from "@/components/LogoLogin";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("/home");
+  };
 
   return (
     <View style={globalStyles.container}>
@@ -25,14 +30,14 @@ export default function Login() {
         secureTextEntry
         onChangeText={setPassword}
       />
-      <View style={{ flexDirection: 'row', marginTop: 10 }}>
-        <Link style={globalStyles.links} href="/login">
-          <View style={[globalStyles.genericButton, { backgroundColor: '#23AAA5', marginRight: 10 }]}>
-            <Text style={globalStyles.genericButtonText}>Log In</Text>
-          </View>
-        </Link>
+
+      <View style={{ flexDirection: 'row', marginBottom: 150, padding: 10, justifyContent: "space-evenly" }}>
+        <TouchableOpacity style={[globalStyles.genericButton, { backgroundColor: '#23AAA5', padding: 10 }]} onPress={handleLogin}>
+          <Text style={globalStyles.genericButtonText}>Log In</Text>
+        </TouchableOpacity>
+
         <Link style={globalStyles.links} href="/register">
-          <View style={[globalStyles.genericButton, { backgroundColor: '#00434B' }]}>
+          <View style={[globalStyles.genericButton, { backgroundColor: '#00434B', padding: 10 }]}>
             <Text style={globalStyles.genericButtonText}>Sign Up</Text>
           </View>
         </Link>

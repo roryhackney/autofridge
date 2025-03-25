@@ -1,7 +1,6 @@
-import {Text, View} from "react-native";
-import {Link} from "expo-router";
+import { Text, View } from "react-native";
+import { Link } from "expo-router";
 import globalStyles from "@/assets/globalStyles";
-
 
 export default function Home() {
     return (
@@ -17,7 +16,7 @@ export default function Home() {
             <Link style={globalStyles.links} href="/fridges">All Fridges</Link>
             <Link style={globalStyles.links} href="/grocery-list">Grocery List</Link>
             <Link style={globalStyles.links} href="/household">Our Household</Link>
-            <Link style={globalStyles.links} href="/notifications">Notifications Settings</Link>
+            <Link style={globalStyles.links} href="/notification">Notifications Settings</Link>
             <Link style={globalStyles.links} href="/profile">My Profile</Link>
         </View>
     );
