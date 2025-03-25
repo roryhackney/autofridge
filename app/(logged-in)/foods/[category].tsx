@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
-import globalStyles from "@/assets/global";
+import globalStyles from "@/assets/globalStyles";
 
 export default function FoodDetail() {
     const {category} = useLocalSearchParams<{category: string}>();

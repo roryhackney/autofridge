@@ -1,12 +1,11 @@
-import { Text, View } from "react-native";
-import {Link} from "expo-router";
-import globalStyles from "@/assets/global";
+import { View } from "react-native";
+import LogoLogin from "@/components/LogoLogin";
+import Login from "../(logged-out)/login"; 
 
 export default function Index() {
-    return (
-        <View>
-            <Text>Implement Sign Up screen</Text>
-            <Link style={globalStyles.links} href="/home">Home</Link>
-        </View>
-    );
+  return (
+    <View style={{ flex: 1 }}>
+      <Login /> 
+    </View>
+  );
 }

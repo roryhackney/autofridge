@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, ScrollView, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Dimensions } from "react-native";
 import ListOfItems from "../../components/ListOfItems";
 import FridgeButton from "../../components/FridgeButton"; 
 import DeleteFromList from "../../components/DeleteFromList";
@@ -18,10 +18,9 @@ export default function GroceryList() {
     ]);
 
     const [checkedItems, setCheckedItems] = useState<string[]>([]);
-    const [newItem, setNewItem] = useState("");
     const [modalVisible, setModalVisible] = useState(false);
+    const screenHeight = Dimensions.get("window").height;
 
-    // Toggle checked items
     const handleToggleCheck = (id: string) => {
         setCheckedItems((prevCheckedItems) =>
             prevCheckedItems.includes(id)
@@ -30,7 +29,6 @@ export default function GroceryList() {
         );
     };
 
-    // Delete checked items from the list
     const handleDeleteCheckedItems = () => {
         setGroceryItems((prevItems) =>
             prevItems.filter((item) => !checkedItems.includes(item.id))
@@ -38,23 +36,15 @@ export default function GroceryList() {
         setCheckedItems([]);
     };
 
-    // Add new item from input field
-    const handleAddItem = () => {
-        if (newItem.trim() === "") return;
-        setGroceryItems([...groceryItems, { id: Date.now().toString(), name: newItem }]);
-        setNewItem(""); 
-    };
-
-    // Add new item from Modal
     const handleAddItemFromModal = (name: string, quantity: number, shared: string, note: string) => {
         const newItemName = `${quantity} ${name} ${shared === "Yes" ? "(Shared)" : ""} ${note ? "- " + note : ""}`;
         setGroceryItems([...groceryItems, { id: Date.now().toString(), name: newItemName }]);
     };
 
     return (
-        <View style={{ flex: 1 }}>
-            {/* Fixed Header */}
-            <View style={{ position: "absolute", top: 0, left: 0, right: 0, backgroundColor: "white", zIndex: 10, paddingVertical: 20 }}>
+        <View style={{ flex: 1, backgroundColor: "white" }}>
+            {/* Sticky Header */}
+            <View style={{ backgroundColor: "white", paddingVertical: 20, elevation: 5 }}>
                 <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center", marginBottom: 8 }}>Grocery List</Text>
                 <View style={{ alignItems: "center", marginVertical: 10 }}>
                     <View style={{ width: 200 }}>  
@@ -65,14 +55,14 @@ export default function GroceryList() {
                         />
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 20 }}>
-                    <DeleteFromList title="Delete From List" onPress={handleDeleteCheckedItems} />
-                    <FridgeButton title="Add To Fridge" onPress={() => alert("Items will be added to Fridge")} />
+                <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
+                    <DeleteFromList title="Delete From List" onPress={handleDeleteCheckedItems} style={{ marginHorizontal: 10 }} />
+                    <FridgeButton title="Add To Fridge" onPress={() => alert("Items will be added to Fridge")} style={{ marginHorizontal: 10 }} />
                 </View>
             </View>
 
             {/* Scrollable List */}
-            <ScrollView contentContainerStyle={{ paddingTop: 180, alignItems: "center", paddingBottom: 20 }}>
+            <ScrollView contentContainerStyle={{ alignItems: "center", paddingBottom: 20 }}>
                 <ListOfItems items={groceryItems} onToggleCheck={handleToggleCheck} checkedItems={checkedItems} />
             </ScrollView>
 
