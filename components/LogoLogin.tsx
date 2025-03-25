@@ -5,9 +5,9 @@ import globalStyles from "../assets/globalStyles";
 
 export default function LogoLogin() {
   return (
-    <View style={globalStyles.container}>
+    <View>
       <Image
-        source={require('@/assets/global')}
+        source={require('@/assets/images/AutoFridge.png')}
         style={globalStyles.logo}
       />
     </View>

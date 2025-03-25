@@ -6,22 +6,10 @@ import LogoLogin from "@/components/LogoLogin";
 export default function Index() {
   return (
     <View style={globalStyles.container}>
-      <LogoLogin />
-      <Link style={globalStyles.links} href="/login">
-        <View style={globalStyles.genericButton}>
-          <Text style={globalStyles.genericButtonText}>Log In</Text>
-        </View>
-      </Link>
-      <Link style={globalStyles.links} href="/register">
-        <View style={globalStyles.genericButton}>
-          <Text style={globalStyles.genericButtonText}>Sign Up</Text>
-        </View>
-      </Link>
-      <Link style={globalStyles.links} href="/home">
-        <View style={globalStyles.genericButton}>
-          <Text style={globalStyles.genericButtonText}>Go to Home</Text>
-        </View>
-      </Link>
+        <LogoLogin />
+        <Link style={globalStyles.links} href="/login">Log In</Link>
+        <Link style={globalStyles.links} href="/register">Sign Up</Link>
+        <Link style={globalStyles.links} href="/home">Go to Home</Link>
     </View>
   );
 }

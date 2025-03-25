@@ -7,8 +7,9 @@ export default function Home() {
     return (
         <View style={{flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "flex-start"}}>
             <Text style={{fontSize: 16, color: "black"}}>Implement Home screen</Text>
+            <Link style={globalStyles.links} href="/">Index</Link>
             <Link style={globalStyles.links} href="/home">Home</Link>
-            <Link style={globalStyles.links} href="/">Sign In</Link>
+            <Link style={globalStyles.links} href="/login">Sign In</Link>
             <Link style={globalStyles.links} href="/register">Register</Link>
             <Link style={globalStyles.links} href="/join-household">Join Household</Link>
             <Link style={globalStyles.links} href={{pathname: "/food/[id]", params: {"id": "Bacon"}}}>Food (Bacon)</Link>
