@@ -7,7 +7,7 @@ export default function Index() {
   return (
     <View style={globalStyles.container}>
       <LogoLogin />
-      <Link style={globalStyles.links} href="/Login">
+      <Link style={globalStyles.links} href="/login">
         <View style={globalStyles.genericButton}>
           <Text style={globalStyles.genericButtonText}>Log In</Text>
         </View>

@@ -7,7 +7,7 @@ export default function LogoLogin() {
   return (
     <View style={globalStyles.container}>
       <Image
-        source={require('@assets/images/AutoFridge.png')}
+        source={require('@/assets/global')}
         style={globalStyles.logo}
       />
     </View>
