@@ -1,4 +1,4 @@
-import globalStyles from '@/assets/global';
+import globalStyles from '@/assets/globalStyles';
 import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
 
 export default function GenericButton(props: {title: string, action: () => void, isDark?: boolean, isSmall?: boolean, style?: StyleProp<ViewStyle>}) {

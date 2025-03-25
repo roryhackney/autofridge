@@ -1,6 +1,6 @@
 import {Text, View, ScrollView} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
-import globalStyles from "@/assets/global";
+import globalStyles from "@/assets/globalStyles";
 import GenericButton from "@/components/GenericButton";
 import { getFoodById } from "@/components/database-mock";
 import { useState } from "react";
