@@ -7,9 +7,15 @@ export default function Index() {
   return (
     <View style={globalStyles.container}>
         <LogoLogin />
-        <Link style={globalStyles.links} href="/login">Log In</Link>
-        <Link style={globalStyles.links} href="/register">Sign Up</Link>
-        <Link style={globalStyles.links} href="/home">Go to Home</Link>
+        <View style={[globalStyles.genericButton, {backgroundColor: "#00434B", width: 272}]}>
+            <Link style={globalStyles.genericButtonText} href="/login">Log In</Link>
+        </View>
+        <View style={[globalStyles.genericButton, {backgroundColor: "#00434B", width: 272, margin: 10}]}>
+            <Link style={globalStyles.genericButtonText} href="/register">Sign Up</Link>
+        </View>
+        <View style={[globalStyles.genericButton, {backgroundColor: "#00434B", width: 272}]}>
+            <Link style={globalStyles.genericButtonText} href="/home">Go to Home</Link>
+        </View>
     </View>
   );
 }
