@@ -24,7 +24,7 @@ export default function RootLayout() {
                     </View>
                 </Text>
             </View>
-            <Stack /> 
+            <Stack />
             <View style={{ flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', padding: 20 }}>
                 <Link href="/fridges" style={{ color: "black" }}>
                     <View style={{ alignItems: "center" }}>

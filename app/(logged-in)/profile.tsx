@@ -117,7 +117,7 @@ export default function Profile() {
 const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
-        paddingBottom: 80, // Ensures space at bottom
+        paddingBottom: 80, 
     },
         
     container: {

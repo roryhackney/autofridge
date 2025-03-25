@@ -55,9 +55,9 @@ export default function GroceryList() {
                         />
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
-                    <DeleteFromList title="Delete From List" onPress={handleDeleteCheckedItems} style={{ marginHorizontal: 10 }} />
-                    <FridgeButton title="Add To Fridge" onPress={() => alert("Items will be added to Fridge")} style={{ marginHorizontal: 10 }} />
+                <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginHorizontal: 10 }}>
+                    <DeleteFromList title="Delete From List" onPress={handleDeleteCheckedItems} />
+                    <FridgeButton title="Add To Fridge" onPress={() => alert("Items will be added to Fridge")} />
                 </View>
             </View>
 
